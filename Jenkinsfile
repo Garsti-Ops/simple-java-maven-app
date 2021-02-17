@@ -7,11 +7,17 @@ pipeline {
     }
     stages {
         stage('Build') {
+            when {
+              branch '*'
+            }
             steps {
                 sh 'mvn -B -D skipTests clean package'
             }
         }
         stage('Test') {
+            when {
+              branch '*'
+            }
             steps {
                 sh 'mvn test'
             }
